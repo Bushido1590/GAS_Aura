@@ -4,8 +4,10 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "GameplayEffectTypes.h"
 #include "AuraEffectActor.generated.h"
 
+class UAbilitySystemComponent;
 class UGameplayEffect;
 
 UENUM(BlueprintType)
@@ -46,10 +48,16 @@ protected:
 	TSubclassOf<UGameplayEffect> InstantGameplayEffectClass;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly , Category = "Applied Effects")
+	TArray<TSubclassOf<UGameplayEffect>> InstantGameplayEffectArray;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly , Category = "Applied Effects")
 	EEffectApplicationPolicy InstantEffectApplicationPolicy = EEffectApplicationPolicy::DonNotApply;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly , Category = "Applied Effects")
 	TSubclassOf<UGameplayEffect> DurationGameplayEffectClass;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadOnly , Category = "Applied Effects")
+	TArray<TSubclassOf<UGameplayEffect>> DurationGameplayEffectArray;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly , Category = "Applied Effects")
 	EEffectApplicationPolicy DurationEffectApplicationPolicy = EEffectApplicationPolicy::DonNotApply;
@@ -58,10 +66,19 @@ protected:
 	TSubclassOf<UGameplayEffect> InfiniteGameplayEffectClass;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly , Category = "Applied Effects")
+	TArray<TSubclassOf<UGameplayEffect>> InfiniteGameplayEffectArray;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly , Category = "Applied Effects")
 	EEffectApplicationPolicy InfiniteEffectApplicationPolicy = EEffectApplicationPolicy::DonNotApply;
 	
 	UPROPERTY(EditAnywhere, BlueprintReadOnly , Category = "Applied Effects")
 	EEffectRemovalPolicy InfiniteEffectRemovalPolicy = EEffectRemovalPolicy::RemoveOnEndOverlap;
+
+	TMap<FActiveGameplayEffectHandle, UAbilitySystemComponent*> ActiveEffectHandles;
+
+
+
+	
 private:
 	
 	
