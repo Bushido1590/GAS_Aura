@@ -24,20 +24,27 @@ struct FEffectProperties
 
 	UPROPERTY()
 	TObjectPtr<UAbilitySystemComponent> SourceASC = nullptr;
+	
 	UPROPERTY()
 	TObjectPtr<AActor> SourceAvatarActor = nullptr;
+	
 	UPROPERTY()
 	TObjectPtr<AController> SourceController = nullptr;
+	
 	UPROPERTY()
 	TObjectPtr<ACharacter> SourceCharacter = nullptr;
+	
 
 	
 	UPROPERTY()
 	TObjectPtr<UAbilitySystemComponent> TargetASC = nullptr;
+	
 	UPROPERTY()
 	TObjectPtr<AActor> TargetAvatarActor = nullptr;
+	
 	UPROPERTY()
 	TObjectPtr<AController> TargetController = nullptr;
+	
 	UPROPERTY()
 	TObjectPtr<ACharacter> TargetCharacter = nullptr;
 	
@@ -85,6 +92,12 @@ public:
 
 	UFUNCTION()
 	void OnRep_MaxMana(const FGameplayAttributeData& OldMaxMana) const;
+
+private:
+
+	void SetEffectProperties(const FGameplayEffectModCallbackData& Data, FEffectProperties& Props) const;
 };
+
+
 
 
