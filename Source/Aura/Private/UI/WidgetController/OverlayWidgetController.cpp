@@ -35,7 +35,7 @@ void UOverlayWidgetController::BlindCallbacksToDependencies()
 		[this] (const FOnAttributeChangeData& Data)
 		{
 			OnMaxHealthChanged.Broadcast(Data.NewValue);
-		}
+		} 
 	);
 
 	AbilitySystemComponent->GetGameplayAttributeValueChangeDelegate(
