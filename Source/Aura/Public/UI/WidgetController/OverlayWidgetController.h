@@ -58,6 +58,11 @@ public:
 	FOnMaxManaChangedSignature OnMaxManaChanged ;
 
 protected:
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Widget Data")
+	TObjectPtr<UDataTable> MessageWidgetDataTable;
+
+	
 	void HealthChanged(const FOnAttributeChangeData& Data) const ;
 	void MaxHealthChanged(const FOnAttributeChangeData& Data) const ;
 	void ManaChanged(const FOnAttributeChangeData& Data) const ;
