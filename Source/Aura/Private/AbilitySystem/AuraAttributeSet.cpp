@@ -7,9 +7,68 @@
 #include "Net/UnrealNetwork.h"
 #include "GameplayEffectExtension.h"
 #include "GameFramework/Character.h"
+#include "AuraGameplayTags.h"
 
 UAuraAttributeSet::UAuraAttributeSet()
 {
+	const FAuraGameplayTags& GameplayTags = FAuraGameplayTags::Get();
+
+	FAttributeSignature StrengthDelegate;
+	StrengthDelegate.BindStatic(GetStrengthAttribute);
+	TagsToAttributes.Add(GameplayTags.Attributes_Primary_Strength, StrengthDelegate);
+
+	FAttributeSignature IntelligenceDelegate;
+	IntelligenceDelegate.BindStatic(GetIntelligenceAttribute);
+	TagsToAttributes.Add(GameplayTags.Attributes_Primary_Intelligence, IntelligenceDelegate);
+
+	FAttributeSignature ResilienceDelegate;
+	ResilienceDelegate.BindStatic(GetResilienceAttribute);
+	TagsToAttributes.Add(GameplayTags.Attributes_Primary_Resilience, ResilienceDelegate);
+
+	FAttributeSignature VigorDelegate;
+	VigorDelegate.BindStatic(GetVigorAttribute);
+	TagsToAttributes.Add(GameplayTags.Attributes_Primary_Vigor, VigorDelegate);
+	
+	
+	FAttributeSignature ArmorDelegate;
+	ArmorDelegate.BindStatic(GetArmorAttribute);
+	TagsToAttributes.Add(GameplayTags.Attributes_Secondary_Armor, ArmorDelegate);
+
+	FAttributeSignature ArmorPenetrationDelegate;
+	ArmorPenetrationDelegate.BindStatic(GetArmorPenetrationAttribute);
+	TagsToAttributes.Add(GameplayTags.Attributes_Secondary_ArmorPenetration, ArmorPenetrationDelegate);
+
+	FAttributeSignature BlockChanceDelegate;
+	BlockChanceDelegate.BindStatic(GetBlockChanceAttribute);
+	TagsToAttributes.Add(GameplayTags.Attributes_Secondary_BlockChance, BlockChanceDelegate);
+
+	FAttributeSignature CriticalHitChanceDelegate;
+	CriticalHitChanceDelegate.BindStatic(GetCriticalHitChanceAttribute);
+	TagsToAttributes.Add(GameplayTags.Attributes_Secondary_CriticalHitChance, CriticalHitChanceDelegate);
+
+	FAttributeSignature CriticalHitDamageDelegate;
+	CriticalHitDamageDelegate.BindStatic(GetCriticalHitDamageAttribute);
+	TagsToAttributes.Add(GameplayTags.Attributes_Secondary_CriticalHitDamage, CriticalHitDamageDelegate);
+
+	FAttributeSignature CriticalHitResistanceDelegate;
+	CriticalHitResistanceDelegate.BindStatic(GetCriticalHitResistanceAttribute);
+	TagsToAttributes.Add(GameplayTags.Attributes_Secondary_CriticalHitResistance, CriticalHitResistanceDelegate);
+
+	FAttributeSignature HealthRegenerationDelegate;
+	HealthRegenerationDelegate.BindStatic(GetHealthRegenerationAttribute);
+	TagsToAttributes.Add(GameplayTags.Attributes_Secondary_HealthRegeneration, HealthRegenerationDelegate);
+
+	FAttributeSignature ManaRegenerationDelegate;
+	ManaRegenerationDelegate.BindStatic(GetManaRegenerationAttribute);
+	TagsToAttributes.Add(GameplayTags.Attributes_Secondary_ManaRegeneration, ManaRegenerationDelegate);
+
+	FAttributeSignature MaxHealthDelegate;
+	MaxHealthDelegate.BindStatic(GetMaxHealthAttribute);
+	TagsToAttributes.Add(GameplayTags.Attributes_Secondary_MaxHealth, MaxHealthDelegate);
+
+	FAttributeSignature MaxManaDelegate;
+	MaxManaDelegate.BindStatic(GetMaxManaAttribute);
+	TagsToAttributes.Add(GameplayTags.Attributes_Secondary_MaxMana, MaxManaDelegate);
 	
 }
 
