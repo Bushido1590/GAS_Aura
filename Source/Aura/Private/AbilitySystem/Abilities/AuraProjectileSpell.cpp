@@ -25,16 +25,16 @@ void UAuraProjectileSpell::ActivateAbility(const FGameplayAbilitySpecHandle Hand
 		SpawnTransform.SetLocation(SocketLocation);
 		//TODO: Set the Projectile Rotation
 		
-		AAuraProjectile* Projectile = GetWorld()->SpawnActorDeferred<AAuraProjectile>(
+		/*AAuraProjectile* Projectile = GetWorld()->SpawnActorDeferred<AAuraProjectile>(
 			ProjectileClass,
 			SpawnTransform,
 			GetOwningActorFromActorInfo(),
 			Cast<APawn>(GetOwningActorFromActorInfo()),
-			ESpawnActorCollisionHandlingMethod::AlwaysSpawn);
+			ESpawnActorCollisionHandlingMethod::AlwaysSpawn);*/
 
 		//TODO: Give the Projectile a Gameplay Effect Spec for causing Damage.
 
 		
-		Projectile->FinishSpawning(SpawnTransform);
+		//Projectile->FinishSpawning(SpawnTransform);
 	}
 }
