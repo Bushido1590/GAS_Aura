@@ -3,10 +3,11 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "CookOnTheSide/CookOnTheFlyServer.h"
 #include "GameFramework/Actor.h"
+#include "GameplayEffectTypes.h"
 #include "AuraProjectile.generated.h"
 
+struct FGameplayEffectSpecHandle;
 class USphereComponent;
 class UProjectileMovementComponent;
 class UNiagaraSystem;
@@ -20,6 +21,10 @@ public:
 	AAuraProjectile();
 	UPROPERTY(VisibleAnywhere)
 	TObjectPtr<UProjectileMovementComponent> ProjectileMovement;
+
+	UPROPERTY(BlueprintReadWrite, meta = (ExposeOnSpawn = true))
+	FGameplayEffectSpecHandle DamageEffectSpecHandle;
+	
 protected:
 	virtual void BeginPlay() override;
 	virtual void Destroyed() override;
