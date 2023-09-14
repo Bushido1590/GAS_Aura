@@ -38,6 +38,7 @@ FVector AAuraCharacterBase::GetCombatSocketLocation()
 
 void AAuraCharacterBase::InitAbilityActorInfo()
 {
+	
 }
 
 void AAuraCharacterBase::ApplyEffectToSelf(TSubclassOf<UGameplayEffect> GameplayEffectClass, float Level) const
