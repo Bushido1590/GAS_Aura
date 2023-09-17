@@ -127,6 +127,7 @@ void UAuraAttributeSet::PostGameplayEffectExecute(const FGameplayEffectModCallba
 	if (Data.EvaluatedData.Attribute == GetIncomingDamageAttribute())
 	{
 		const float LocalIncomingDamage = GetIncomingDamage();
+		
 		SetIncomingDamage(0.f);
 		if (LocalIncomingDamage > 0.f)
 		{
