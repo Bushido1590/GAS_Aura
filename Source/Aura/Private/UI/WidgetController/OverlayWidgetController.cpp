@@ -19,7 +19,7 @@ void UOverlayWidgetController::BroadcastInitialValues()
 	
 }
 
-void UOverlayWidgetController::BlindCallbacksToDependencies()
+void UOverlayWidgetController::BindCallbacksToDependencies()
 {
 	const UAuraAttributeSet* AuraAttributeSet = CastChecked<UAuraAttributeSet>(AttributeSet);
 
@@ -57,7 +57,7 @@ void UOverlayWidgetController::BlindCallbacksToDependencies()
 
 	if (UAuraAbilitySystemComponent* AuraASC = Cast<UAuraAbilitySystemComponent>(AbilitySystemComponent))
 	{
-		if (AuraASC)
+		if (AuraASC->bStartupAbilitiesGiven)
 		{
 			OnInitializeStartupAbilities(AuraASC);
 		}

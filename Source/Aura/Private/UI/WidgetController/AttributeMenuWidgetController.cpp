@@ -7,7 +7,7 @@
 #include "AbilitySystem/Data/AttributeInfo.h"
 
 
-void UAttributeMenuWidgetController::BlindCallbacksToDependencies()
+void UAttributeMenuWidgetController::BindCallbacksToDependencies()
 {
 	UAuraAttributeSet* AS = CastChecked<UAuraAttributeSet>(AttributeSet);
 	check(AttributeInfo);
