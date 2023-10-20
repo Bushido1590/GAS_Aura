@@ -70,6 +70,12 @@ public:
 
 	UPROPERTY(BlueprintAssignable, Category ="GAS|Messages")
 	FAbilityInfoSignature AbilityInfoDelegate;
+
+	UPROPERTY(BlueprintAssignable, Category ="GAS|XP")
+	FOnAttributeChangedSignature OnXPPercentChangedDelegate;
+
+	UPROPERTY(BlueprintAssignable, Category ="GAS|Level")
+	FOnPlayerStatChangedSignature OnPlayerLevelChangedDelegate;
 	
 protected:
 
@@ -83,8 +89,20 @@ protected:
 	T* GetDataTableRowByTag(UDataTable* DataTable, const FGameplayTag& Tag);
 
 	void OnInitializeStartupAbilities(UAuraAbilitySystemComponent* AuraAbilitySystemComponent);
+
+	void OnXPChanged(int32 NewXP) const ;
+
+	void OnLevelChanged(int32 NewLevel);
+
+
+
+
+	
 	
 };
+
+
+
 
 template <typename T>
 T* UOverlayWidgetController::GetDataTableRowByTag(UDataTable* DataTable, const FGameplayTag& Tag)

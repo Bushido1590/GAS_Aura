@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "GameplayTagContainer.h"
 #include "UI/WidgetController/AuraWidgetController.h"
 #include "AttributeMenuWidgetController.generated.h"
 
@@ -11,7 +12,6 @@ struct FGameplayTag;
 class UAttributeInfo;
 struct FAuraAttributeInfo;
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FAttributeInfoSignature, const FAuraAttributeInfo&, Info);
-
 
 /**
  * 
@@ -27,10 +27,20 @@ public:
 	UPROPERTY(BlueprintAssignable, Category="GAS|Attributes")
 	FAttributeInfoSignature AttributeInfoDelegate;
 
+	UPROPERTY(BlueprintAssignable, Category ="GAS|Attribute Points")
+	FOnPlayerStatChangedSignature AttributePointsChangedDelegate;
+	
+	UPROPERTY(BlueprintAssignable, Category ="GAS|Spell Points")
+	FOnPlayerStatChangedSignature SpellPointsChangedDelegate;
+
+	UFUNCTION(BlueprintCallable)
+	void UpgradeAttribute(const FGameplayTag& AttributeTag);
+
 protected:
 	UPROPERTY(EditDefaultsOnly)
 	TObjectPtr<UAttributeInfo> AttributeInfo;
 
 private:
 	void BroadcastAttributeInfo(const FGameplayTag& AttributeTag, const FGameplayAttribute& Attribute) const ;
+	
 };
